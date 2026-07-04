@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>桃園支聯會｜六月一年內新成員聖餐聚會出席報表</title>
+<style>
+:root{
+  --bg:#f6f7f8;--card:#fff;--ink:#1f2933;--muted:#667085;--line:#d9dee5;
+  --accent:#147c8a;--accent2:#0f5f6b;--good:#2f8f5b;--warn:#b26b00;
+  --shadow:0 10px 30px rgba(20,30,40,.08);--radius:18px;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Microsoft JhengHei",Segoe UI,sans-serif;line-height:1.55}
+.wrapper{max-width:1180px;margin:0 auto;padding:32px 18px 60px}
+.hero{background:linear-gradient(135deg,#0f5f6b,#168a96);color:#fff;border-radius:26px;padding:34px 30px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.12)}
+h1{font-size:clamp(26px,4vw,44px);line-height:1.15;margin:0 0 12px;font-weight:800;letter-spacing:.02em}.subtitle{font-size:17px;opacity:.92;margin:0}.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);padding:8px 12px;border-radius:999px;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:22px 0}.stat{background:var(--card);border-radius:var(--radius);padding:18px 18px;box-shadow:var(--shadow);border:1px solid #edf0f3}.stat .label{color:var(--muted);font-size:14px}.stat .num{font-size:34px;font-weight:800;margin-top:4px}.stat .note{font-size:13px;color:var(--muted)}
+.card{background:var(--card);border:1px solid #edf0f3;border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;margin:18px 0}.card h2{font-size:22px;margin:0 0 14px}.card h3{font-size:18px;margin:0 0 8px}.chart-wrap{width:100%;overflow-x:auto}.chart{min-width:720px;width:100%;height:auto;display:block}.small-chart{min-width:420px}.axis{stroke:#cdd5df;stroke-width:1}.gridline{stroke:#edf0f3;stroke-width:1}.series{fill:none;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}.dot{stroke:white;stroke-width:2}.labelText{font-size:12px;fill:#667085}.valueText{font-size:12px;font-weight:700;fill:#1f2933}.legend{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0 4px}.legend-item{display:flex;align-items:center;gap:6px;font-size:14px;color:#344054}.swatch{width:12px;height:12px;border-radius:50%}
+table{width:100%;border-collapse:collapse;font-size:15px}th,td{padding:12px 10px;border-bottom:1px solid #edf0f3;text-align:right}th:first-child,td:first-child{text-align:left}thead th{background:#f9fafb;color:#475467;font-weight:700}tfoot td{font-weight:800;background:#f9fafb}.rank-good{color:var(--good);font-weight:800}.rank-warn{color:var(--warn);font-weight:800}.unit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.unit-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:10px}.unit-title{font-size:20px;font-weight:800}.unit-metrics{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:13px}.metric strong{color:var(--ink)}.rules{color:#475467}.rules li{margin:.35em 0}.footer{color:#667085;font-size:13px;text-align:center;margin-top:28px}
+@media(max-width:880px){.grid{grid-template-columns:repeat(2,1fr)}.unit-grid{grid-template-columns:1fr}.hero{padding:26px 20px}.wrapper{padding:18px 12px 42px}table{font-size:13px}th,td{padding:9px 6px}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.stat .num{font-size:30px}}
+@media print{body{background:#fff}.wrapper{max-width:none;padding:0}.hero,.card,.stat{box-shadow:none}.card{page-break-inside:avoid}.chart{min-width:0}.grid{grid-template-columns:repeat(4,1fr)}.unit-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <section class="hero">
+    <h1>桃園支聯會｜六月一年內新成員聖餐聚會出席報表</h1>
+    <p class="subtitle">統計六個單位在 2026 年六月四週的「一年內新成員」聖餐聚會出席情況。</p>
+    <div class="meta">
+      <span class="pill">統計日期：06-07、06-14、06-21、06-28</span>
+      <span class="pill">排除：05-31、07-05</span>
+      <span class="pill">包含：1年的成員</span>
+      <span class="pill">排除：1年1個月以上、年資空白</span>
+    </div>
+  </section>
+
+  <section class="grid" id="stats"></section>
+
+  <section class="card">
+    <h2>六個單位出席趨勢總覽</h2>
+    <div class="legend" id="legend"></div>
+    <div class="chart-wrap"><svg class="chart" id="overviewChart" viewBox="0 0 980 460" role="img" aria-label="六個單位六月出席趨勢折線圖"></svg></div>
+  </section>
+
+  <section class="card">
+    <h2>六月完整統計表</h2>
+    <div class="chart-wrap">
+      <table id="summaryTable"></table>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>各單位個別趨勢</h2>
+    <div class="unit-grid" id="unitCards"></div>
+  </section>
+
+  <section class="card rules">
+    <h2>統計口徑</h2>
+    <ul>
+      <li>本報表只統計「一年內新成員」，包含顯示為「1年的成員」者。</li>
+      <li>排除顯示為「1年1個月的成員」以上者，以及 <code>memberSince</code> 空白者。</li>
+      <li>本月只採計六月四週：06-07、06-14、06-21、06-28；不採計 05-31 與 07-05。</li>
+      <li>數字代表該單位一年內新成員中，當週出席過聖餐聚會的人數。</li>
+    </ul>
+  </section>
+
+  <div class="footer">產生日期：2026-07-04｜資料來源：使用者提供之 LCR 新成員出席資料</div>
+</div>
+<script>
+const labels = ["06-07","06-14","06-21","06-28"];
+const units = [
+  {name:"中壢支會", members:20, counts:[11,8,6,8], color:"#147C8A"},
+  {name:"八德支會", members:19, counts:[10,9,13,12], color:"#D97000"},
+  {name:"桃園支會", members:16, counts:[9,8,9,9], color:"#5B5FC7"},
+  {name:"蘆竹支會", members:14, counts:[11,9,6,7], color:"#2F8F5B"},
+  {name:"龍潭支會", members:10, counts:[5,4,2,4], color:"#B42318"},
+  {name:"龜山支會", members:20, counts:[11,7,10,9], color:"#875BF7"}
+];
+const totals = labels.map((_,i)=>units.reduce((s,u)=>s+u.counts[i],0));
+const totalMembers = units.reduce((s,u)=>s+u.members,0);
+const totalAttendance = totals.reduce((a,b)=>a+b,0);
+const avgWeekly = (totalAttendance/labels.length).toFixed(1);
+const bestWeekIndex = totals.indexOf(Math.max(...totals));
+const bestRateUnit = [...units].sort((a,b)=>(avg(b.counts)/b.members)-(avg(a.counts)/a.members))[0];
+function avg(arr){return arr.reduce((a,b)=>a+b,0)/arr.length}
+function pct(n,d){return d?Math.round(n/d*100):0}
+
+document.getElementById('stats').innerHTML = `
+  <div class="stat"><div class="label">統計單位</div><div class="num">${units.length}</div><div class="note">支會</div></div>
+  <div class="stat"><div class="label">一年內新成員合計</div><div class="num">${totalMembers}</div><div class="note">人</div></div>
+  <div class="stat"><div class="label">每週平均出席</div><div class="num">${avgWeekly}</div><div class="note">人 / 週</div></div>
+  <div class="stat"><div class="label">最高週合計</div><div class="num">${totals[bestWeekIndex]}</div><div class="note">${labels[bestWeekIndex]}｜出席率 ${pct(totals[bestWeekIndex], totalMembers)}%</div></div>
+`;
+
+document.getElementById('legend').innerHTML = units.map(u=>`<span class="legend-item"><span class="swatch" style="background:${u.color}"></span>${u.name}</span>`).join('');
+
+function drawChart(svgId, chartUnits, options={}){
+  const svg = document.getElementById(svgId);
+  const W = options.width || 980, H = options.height || 460;
+  const m = {l:58,r:32,t:34,b:54};
+  const maxY = options.maxY ?? Math.max(...chartUnits.flatMap(u=>u.counts), ...totals) + 2;
+  const minY = 0;
+  const x = i => m.l + i*(W-m.l-m.r)/(labels.length-1);
+  const y = v => H-m.b - (v-minY)*(H-m.t-m.b)/(maxY-minY);
+  let html = '';
+  const steps = Math.min(maxY, 8);
+  for(let i=0;i<=steps;i++){
+    const val = Math.round(i*maxY/steps);
+    html += `<line class="gridline" x1="${m.l}" y1="${y(val)}" x2="${W-m.r}" y2="${y(val)}"></line>`;
+    html += `<text class="labelText" x="${m.l-12}" y="${y(val)+4}" text-anchor="end">${val}</text>`;
+  }
+  html += `<line class="axis" x1="${m.l}" y1="${H-m.b}" x2="${W-m.r}" y2="${H-m.b}"></line>`;
+  html += `<line class="axis" x1="${m.l}" y1="${m.t}" x2="${m.l}" y2="${H-m.b}"></line>`;
+  labels.forEach((lab,i)=>{
+    html += `<text class="labelText" x="${x(i)}" y="${H-20}" text-anchor="middle">${lab}</text>`;
+  });
+  chartUnits.forEach(u=>{
+    const d = u.counts.map((v,i)=>`${i?'L':'M'} ${x(i)} ${y(v)}`).join(' ');
+    html += `<path class="series" d="${d}" stroke="${u.color}"></path>`;
+    u.counts.forEach((v,i)=>{
+      html += `<circle class="dot" cx="${x(i)}" cy="${y(v)}" r="5" fill="${u.color}"></circle>`;
+      if(options.showValues!==false) html += `<text class="valueText" x="${x(i)}" y="${y(v)-10}" text-anchor="middle">${v}</text>`;
+    });
+  });
+  svg.innerHTML = html;
+}
+drawChart('overviewChart', units, {maxY:15});
+
+function renderTable(){
+  const rows = units.map(u=>{
+    const a = avg(u.counts);
+    const rate = pct(a,u.members);
+    return `<tr><td>${u.name}</td><td>${u.members}</td>${u.counts.map(v=>`<td>${v}</td>`).join('')}<td>${a.toFixed(1)}</td><td>${rate}%</td></tr>`;
+  }).join('');
+  const totalAvg = avg(totals);
+  document.getElementById('summaryTable').innerHTML = `
+    <thead><tr><th>單位</th><th>一年內新成員數</th>${labels.map(l=>`<th>${l}</th>`).join('')}<th>四週平均</th><th>平均出席率</th></tr></thead>
+    <tbody>${rows}</tbody>
+    <tfoot><tr><td>合計</td><td>${totalMembers}</td>${totals.map(v=>`<td>${v}</td>`).join('')}<td>${totalAvg.toFixed(1)}</td><td>${pct(totalAvg,totalMembers)}%</td></tr></tfoot>
+  `;
+}
+renderTable();
+
+const unitCards = document.getElementById('unitCards');
+unitCards.innerHTML = units.map((u,idx)=>{
+  const id = `unitChart${idx}`;
+  const a = avg(u.counts);
+  const high = Math.max(...u.counts);
+  const low = Math.min(...u.counts);
+  const trend = u.counts[u.counts.length-1] - u.counts[0];
+  return `<div class="card" style="margin:0">
+    <div class="unit-head">
+      <div><div class="unit-title">${u.name}</div><div class="unit-metrics"><span class="metric">一年內新成員 <strong>${u.members}</strong> 人</span><span class="metric">四週平均 <strong>${a.toFixed(1)}</strong></span><span class="metric">平均出席率 <strong>${pct(a,u.members)}%</strong></span></div></div>
+      <div class="${trend>=0?'rank-good':'rank-warn'}">${trend>=0?'+':''}${trend}</div>
+    </div>
+    <div class="chart-wrap"><svg class="chart small-chart" id="${id}" viewBox="0 0 520 260"></svg></div>
+  </div>`;
+}).join('');
+units.forEach((u,idx)=>drawChart(`unitChart${idx}`,[u],{width:520,height:260,maxY:Math.max(14, Math.max(...u.counts)+2)}));
+</script>
+</body>
+</html>
